@@ -10,4 +10,9 @@
       <ProjectReference Include="..\BookManagment.Domain\BookManagment.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="DbContexs\" />
+      <Folder Include="EntityConfigurations\" />
+    </ItemGroup>
+
 </Project>
