@@ -5,6 +5,7 @@ public static partial class HostConfigurations
     public static ValueTask<WebApplicationBuilder> ConfigureAsync(this WebApplicationBuilder builder)
     {
         builder
+            .AddPersistence()
             .AddDevTools()
             .AddExposers();
 

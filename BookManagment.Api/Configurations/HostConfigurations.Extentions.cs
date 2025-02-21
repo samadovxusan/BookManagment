@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
+using BookManagment.Persistence.DbContexs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Configurations;
 
@@ -11,6 +13,13 @@ public static partial class HostConfigurations
     {
         Assemblies = Assembly.GetExecutingAssembly().GetReferencedAssemblies().Select(Assembly.Load).ToList();
         Assemblies.Add(Assembly.GetExecutingAssembly());
+    }
+    
+    private static WebApplicationBuilder AddPersistence(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+        return builder;
     }
 
     private static WebApplicationBuilder AddDevTools(this WebApplicationBuilder builder)
