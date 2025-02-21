@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <Folder Include="EntityConfigurations\" />
+      <Folder Include="Repositories\Interfaces\" />
     </ItemGroup>
 
     <ItemGroup>
