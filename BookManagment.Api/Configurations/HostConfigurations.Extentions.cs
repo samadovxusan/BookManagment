@@ -1,5 +1,9 @@
 ﻿using System.Reflection;
+using BookManagment.Application.Users.Service;
+using BookManagment.Infrastructure.Users.Services;
 using BookManagment.Persistence.DbContexs;
+using BookManagment.Persistence.Repositories;
+using BookManagment.Persistence.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +23,19 @@ public static partial class HostConfigurations
     {
         builder.Services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+        return builder;
+    }
+
+    private static WebApplicationBuilder AddIdentityInfrastructure(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddScoped<IUserRepository, UserRepository>();
+        builder.Services.AddScoped<IUserService, UserService>();
+
+        return builder;
+    }
+    private static WebApplicationBuilder AddMappers(this WebApplicationBuilder builder)
+    {
+        builder.Services.AddAutoMapper(Assemblies);
         return builder;
     }
 

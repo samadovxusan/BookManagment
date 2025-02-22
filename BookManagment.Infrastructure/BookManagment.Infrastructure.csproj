@@ -11,4 +11,12 @@
       <ProjectReference Include="..\BookManagment.Persistence\BookManagment.Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Users\Validators\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="14.0.0" />
+    </ItemGroup>
+
 </Project>

@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BookManagment.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookManagment.Persistence.DbContexs;
 
-public sealed class AppDbContext:DbContext
+public  class AppDbContext:DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options):base(options)
     {
@@ -12,5 +13,6 @@ public sealed class AppDbContext:DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
+    public DbSet<User> Users { get; set; }
     
 }
