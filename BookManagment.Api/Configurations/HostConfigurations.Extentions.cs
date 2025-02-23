@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
 using BookManagment.Application.Users.Service;
+using BookManagment.Domain.Common.Entities;
 using BookManagment.Infrastructure.Users.Services;
 using BookManagment.Persistence.DbContexs;
 using BookManagment.Persistence.Repositories;
 using BookManagment.Persistence.Repositories.Interfaces;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,6 +40,14 @@ public static partial class HostConfigurations
         builder.Services.AddAutoMapper(Assemblies);
         return builder;
     }
+    private static WebApplicationBuilder AddValidators(this WebApplicationBuilder builder)
+    {
+        builder.Services.Configure<ValidationSettings>(builder.Configuration.GetSection(nameof(ValidationSettings)));
+
+        builder.Services.AddValidatorsFromAssemblies(Assemblies);        
+        return builder;
+    }
+
 
     private static WebApplicationBuilder AddDevTools(this WebApplicationBuilder builder)
     {

@@ -6,10 +6,11 @@ using BookManagment.Domain.Common.Entities;
 using BookManagment.Domain.Entities;
 using BookManagment.Persistence.Extensions;
 using BookManagment.Persistence.Repositories.Interfaces;
+using FluentValidation;
 
 namespace BookManagment.Infrastructure.Users.Services;
 
-public class UserService(IUserRepository userRepository,IMapper mapper):IUserService
+public class UserService(IUserRepository userRepository,IMapper mapper,IValidator<UserCretential> validator):IUserService
 {
     public IQueryable<User> Get(FilterPagination filterPagination, Expression<Func<User, bool>>? predicate = default)
     {
@@ -26,6 +27,12 @@ public class UserService(IUserRepository userRepository,IMapper mapper):IUserSer
 
     public async ValueTask<bool> CreateAsync(UserCretential user, CancellationToken cancellationToken = default)
     {
+        var validationResult = validator
+            .Validate(user,
+                options => options.IncludeRuleSets("Registration"));
+        if (!validationResult.IsValid)
+            throw new ValidationException(validationResult.Errors);
+        
         var result = await userRepository.CreateAsync(mapper.Map<User>(user), cancellationToken);
         return result is not null;
     }
