@@ -17,7 +17,7 @@ Clone the Repository:
 sh
 Copy
 Edit
-git clone https://github.com/yourusername/BookManagement.git
+git clone https://github.com/samadovxusan/BookManagement.git
 cd BookManagement
 Configure the Database:
 
@@ -35,7 +35,7 @@ Edit
 dotnet run
 Access API Documentation:
 
-Open: http://localhost:5000/swagger
+Open: http://localhost:5087/swagger
 📜 API Endpoints
 Method	Endpoint	Description
 POST	/api/books	Add a new book
