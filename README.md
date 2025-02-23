@@ -17,7 +17,7 @@ Clone the Repository:
 sh
 Copy
 Edit
-git clone https://github.com/samadovxusan/BookManagement.git
+[git clone https://github.com/samadovxusan/BookManagement.git](https://github.com/samadovxusan/BookManagment.git)
 cd BookManagement
 Configure the Database:
 
