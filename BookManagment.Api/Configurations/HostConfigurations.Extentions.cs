@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
+using BookManagment.Application.Books.Service;
 using BookManagment.Application.Users.Service;
 using BookManagment.Domain.Common.Entities;
+using BookManagment.Infrastructure.Books.Service;
 using BookManagment.Infrastructure.Users.Services;
 using BookManagment.Persistence.DbContexs;
 using BookManagment.Persistence.Repositories;
@@ -30,9 +32,14 @@ public static partial class HostConfigurations
 
     private static WebApplicationBuilder AddIdentityInfrastructure(this WebApplicationBuilder builder)
     {
+        // user
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IUserService, UserService>();
-
+        // book
+        builder.Services.AddScoped<IBookRepository, BookRepository>();
+        builder.Services.AddScoped<IBookService, BookService>();
+        
+        
         return builder;
     }
     private static WebApplicationBuilder AddMappers(this WebApplicationBuilder builder)

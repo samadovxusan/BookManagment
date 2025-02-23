@@ -14,5 +14,6 @@ public  class AppDbContext:DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
     public DbSet<User> Users { get; set; }
+    public DbSet<Book> Books { get; set; }
     
 }
