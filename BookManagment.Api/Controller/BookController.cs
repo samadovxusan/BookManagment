@@ -3,12 +3,14 @@ using BookManagment.Application.Books.Service;
 using BookManagment.Application.Users.Models;
 using BookManagment.Domain.Common.Entities;
 using BookManagment.Persistence.DbContexs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Controller;
 [Controller]
 [Route("api/[controller]")]
+[Authorize]
 public class BookController(IBookService service,AppDbContext appDbContext ): ControllerBase
 {
     

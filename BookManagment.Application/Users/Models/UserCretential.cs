@@ -1,4 +1,6 @@
-﻿namespace BookManagment.Application.Users.Models;
+﻿using BookManagment.Domain.Enums;
+
+namespace BookManagment.Application.Users.Models;
 
 public class UserCretential
 {
@@ -7,4 +9,6 @@ public class UserCretential
     public string EmailAddress { get; set; } = default!;
 
     public string Password { get; set; } = default!;
+    
+    public Role Role { get; set; }
 }

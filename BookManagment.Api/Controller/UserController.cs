@@ -1,12 +1,14 @@
 ﻿using BookManagment.Application.Users.Models;
 using BookManagment.Application.Users.Service;
 using BookManagment.Domain.Common.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controller;
 
 [Controller]
 [Route("api/[controller]")]
+[Authorize]
 public class UserController(IUserService userService) : ControllerBase
 {
     [HttpGet]
